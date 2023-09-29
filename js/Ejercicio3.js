@@ -1,15 +1,26 @@
 const name = prompt("Buenas! como te llamas?")
-let hour = prompt("Que hora es?")
+let hourInput = prompt("Que hora es?")
+let hello
+const hourInputRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
 
-if(hour < 0 || hour > 24 || isNaN(hour)){
-    alert("La hora introducida no es valida")
-}else{
-    hour = parseInt(hour)
-    if(hour >= 5 && hour <=11){
-        alert(`Buenos dias ${name}`)
-    }else if(hour > 11 && hour <= 19){
-        alert(`Buenas tardes ${name}`)
+if (!hourInputRegex.test(hourInput)) {
+    alert("Por favor, introduce la hora en el formato válido 'HH:MM'");
+}else {
+    let hourParts = hourInput.split(":");
+    let hour = parseInt(hourParts[0])
+    let minutes = parseInt(hourParts[1])
+
+    if (minutes > 59) {
+        alert("Los minutos no pueden ser mayores que 59.")
     }else {
-        alert(`Buenas noches ${name}`)
+          if (hour >= 5 && hour < 12) {
+            hello = "Buenos días";
+        } else if (hour >= 12 && hour < 18) {
+            hello = "Buenas tardes";
+        } else {
+            hello = "Buenas noches";
+        }
+
+        alert(hello + ", " + name + "!")
     }
 }
