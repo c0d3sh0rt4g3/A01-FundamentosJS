@@ -7,7 +7,7 @@ if(number1 < number2){
 if (number2 >= 0){
     alert(`${number2} es positivo`)
 }
-if(number1 > 0){
+if(number1 !== 0){
     alert(`${number1} es negativo o distinto de cero`)
 }
 if (number1 + 1 < number2){
